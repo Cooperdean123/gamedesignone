@@ -49,3 +49,5 @@ text = "hi
 label_settings = SubResource("LabelSettings_6co73")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
