@@ -1,0 +1,103 @@
+[gd_scene load_steps=5 format=3 uid="uid://57vs84et1rx0"]
+
+[ext_resource type="Script" path="res://prog52a.gd" id="1_u52v7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1ct21"]
+line_spacing = 10.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_ue5ex"]
+line_spacing = 10.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_esexh"]
+line_spacing = 10.0
+
+[node name="prog52a" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u52v7")
+
+[node name="LBLPerim" type="Label" parent="."]
+offset_left = 125.0
+offset_top = 413.0
+offset_right = 271.0
+offset_bottom = 470.0
+text = "perimiter"
+label_settings = SubResource("LabelSettings_1ct21")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBLArea" type="Label" parent="."]
+offset_left = 150.0
+offset_top = 339.0
+offset_right = 243.0
+offset_bottom = 396.0
+text = "area"
+label_settings = SubResource("LabelSettings_ue5ex")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 127.0
+offset_top = 92.0
+offset_right = 255.0
+offset_bottom = 138.0
+text = "Length"
+label_settings = SubResource("LabelSettings_esexh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 116.0
+offset_top = 155.0
+offset_right = 262.0
+offset_bottom = 212.0
+text = "width"
+label_settings = SubResource("LabelSettings_1ct21")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 298.0
+offset_top = 75.0
+offset_right = 887.0
+offset_bottom = 136.0
+
+[node name="LineEdit2" type="LineEdit" parent="."]
+offset_left = 304.0
+offset_top = 148.0
+offset_right = 893.0
+offset_bottom = 209.0
+
+[node name="btncalc" type="Button" parent="."]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 525.0
+offset_right = 353.0
+offset_bottom = 634.0
+text = "Calculate
+"
+
+[node name="Btnclear" type="Button" parent="."]
+offset_left = 427.0
+offset_top = 522.0
+offset_right = 711.0
+offset_bottom = 631.0
+text = "clear"
+
+[node name="BtnExit" type="Button" parent="."]
+offset_left = 786.0
+offset_top = 524.0
+offset_right = 1070.0
+offset_bottom = 636.0
+text = "exit
+"
+
+[connection signal="pressed" from="btncalc" to="." method="_on_btncalc_pressed"]
+[connection signal="pressed" from="Btnclear" to="." method="_on_btnclear_pressed"]
+[connection signal="pressed" from="BtnExit" to="." method="_on_btn_exit_pressed"]

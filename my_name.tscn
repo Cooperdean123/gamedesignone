@@ -15,6 +15,7 @@ grow_vertical = 2
 script = ExtResource("1_eb4s4")
 
 [node name="Button2" type="Button" parent="."]
+layout_mode = 0
 offset_left = 448.0
 offset_top = 485.0
 offset_right = 676.0
@@ -32,6 +33,7 @@ text = "Show
 "
 
 [node name="Button3" type="Button" parent="."]
+layout_mode = 0
 offset_left = 829.0
 offset_top = 492.0
 offset_right = 1057.0
