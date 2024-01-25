@@ -8,7 +8,7 @@ func _on_btncalc_pressed():
 	var area = length * width
 	var perim = 2 * length + 2 * width
 	$LBLArea.text = "area." + str(area)
-	$lblPerim.text = "Perimiter." + str(perim)
+	$LBLPerim.text = "Perimiter." + str(perim)
 # opperations + - = / 
 # str string (text)
 # int interger (whole number)
@@ -16,10 +16,10 @@ func _on_btncalc_pressed():
 
 
 func _on_btnclear_pressed():
-	$lineedit.text = ""
-	$lineedit2.text = ""
-	$lblarea.text = ""
-	$lblperim.text = ""
+	$LineEdit.text = ""
+	$LineEdit2.text = ""
+	$LBLArea.text = ""
+	$LBLPerim.text = ""
 	
 	
 	
