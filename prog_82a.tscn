@@ -55,12 +55,12 @@ offset_top = 212.0
 offset_right = 811.0
 offset_bottom = 266.0
 
-[node name="Label3" type="Label" parent="."]
+[node name="lbl" type="Label" parent="."]
 layout_mode = 0
-offset_left = 282.0
-offset_top = 317.0
-offset_right = 783.0
-offset_bottom = 516.0
+offset_left = 167.0
+offset_top = 281.0
+offset_right = 668.0
+offset_bottom = 480.0
 
 [node name="btncalc" type="Button" parent="."]
 layout_mode = 0
