@@ -1,0 +1,62 @@
+[gd_scene load_steps=2 format=3 uid="uid://dm44x18uad1f8"]
+
+[ext_resource type="Script" path="res://prog88a.gd" id="1_yijqv"]
+
+[node name="prog88a" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yijqv")
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_right = 449.0
+offset_bottom = 204.0
+
+[node name="LineEdit2" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 696.0
+offset_top = 3.0
+offset_right = 1145.0
+offset_bottom = 207.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 206.0
+offset_right = 1151.0
+offset_bottom = 656.0
+
+[node name="BtnCalc" type="Button" parent="."]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 481.0
+offset_right = 393.0
+offset_bottom = 625.0
+text = "Calculate
+"
+
+[node name="Btnclear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 438.0
+offset_top = 484.0
+offset_right = 755.0
+offset_bottom = 628.0
+text = "Clear
+"
+
+[node name="Btnexit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 828.0
+offset_top = 481.0
+offset_right = 1117.0
+offset_bottom = 625.0
+text = "Exit
+"
+
+[connection signal="pressed" from="BtnCalc" to="." method="_on_btn_calc_pressed"]
+[connection signal="pressed" from="Btnclear" to="." method="_on_btnclear_pressed"]
+[connection signal="pressed" from="Btnexit" to="." method="_on_btnexit_pressed"]
