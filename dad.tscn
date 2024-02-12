@@ -1,0 +1,82 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtitvx8pange2"]
+
+[ext_resource type="Script" path="res://Control.gd" id="1_t1mvs"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3to8q"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_n1umy"]
+line_spacing = 15.0
+font_size = 50
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t1mvs")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 52.0
+offset_right = 314.0
+offset_bottom = 134.0
+text = "Length"
+label_settings = SubResource("LabelSettings_3to8q")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 81.0
+offset_top = 132.0
+offset_right = 309.0
+offset_bottom = 216.0
+text = "width"
+label_settings = SubResource("LabelSettings_n1umy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 319.0
+offset_top = 155.0
+offset_right = 703.0
+offset_bottom = 220.0
+
+[node name="LineEdit2" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 319.0
+offset_top = 68.0
+offset_right = 700.0
+offset_bottom = 131.0
+
+[node name="Calc" type="Button" parent="."]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 536.0
+offset_right = 294.0
+offset_bottom = 628.0
+text = "Calc
+"
+
+[node name="Clear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 349.0
+offset_top = 535.0
+offset_right = 610.0
+offset_bottom = 629.0
+text = "Clear"
+
+[node name="Exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 697.0
+offset_top = 537.0
+offset_right = 990.0
+offset_bottom = 631.0
+text = "Exit"
+
+[connection signal="pressed" from="Calc" to="." method="_on_calc_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
