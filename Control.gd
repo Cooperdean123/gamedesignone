@@ -14,4 +14,4 @@ func _on_calc_pressed():
 	var w = int($LineEdit2.text)
 	var a = getArea(l,w)
 	var p = getPerim(l,w) 
-	$lblout.text = "Area: Sd/nPerimiter: sd" % [a, p]
+$lblout.text = "Area: Sd/nPerimiter: sd" % [a, p]
