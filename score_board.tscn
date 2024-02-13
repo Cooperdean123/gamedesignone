@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx53wg5jbwwbp"]
+
+[ext_resource type="Script" path="res://ScoreBoard.gd" id="1_kemdh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_m3chp"]
+font_size = 35
+
+[node name="ScoreBoard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kemdh")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 524.0
+offset_bottom = 138.0
+text = "Modified Points (add/subtract):"
+label_settings = SubResource("LabelSettings_m3chp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lblout" type="Label" parent="."]
+layout_mode = 0
+offset_left = 217.0
+offset_top = 206.0
+offset_right = 849.0
+offset_bottom = 518.0
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 559.0
+offset_top = 44.0
+offset_right = 953.0
+offset_bottom = 116.0
+placeholder_text = "add"
+alignment = 1
+
+[node name="btnupdate" type="Button" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 501.0
+offset_right = 307.0
+offset_bottom = 611.0
+text = "update
+"
+
+[node name="btnreset" type="Button" parent="."]
+offset_left = 794.0
+offset_top = 498.0
+offset_right = 1061.0
+offset_bottom = 607.0
+text = "reset"
+
+[connection signal="pressed" from="btnupdate" to="." method="_on_btnupdate_pressed"]
+[connection signal="pressed" from="btnreset" to="." method="_on_btnreset_pressed"]
