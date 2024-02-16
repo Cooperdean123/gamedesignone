@@ -49,6 +49,7 @@ text = "update
 "
 
 [node name="btnreset" type="Button" parent="."]
+layout_mode = 0
 offset_left = 794.0
 offset_top = 498.0
 offset_right = 1061.0
