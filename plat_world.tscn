@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=3 uid="uid://biop12ih1778t"]
+
+[ext_resource type="Script" path="res://plat_world.gd" id="1_7o5y1"]
+[ext_resource type="Script" path="res://pltplayer.gd" id="2_j4wsq"]
+[ext_resource type="Texture2D" uid="uid://5t56rx1mqdhg" path="res://icon.svg" id="3_qr2a1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e1wka"]
+radius = 25.4951
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o7wu2"]
+size = Vector2(16, 26)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_momc8"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_0ctf4"]
+a = Vector2(216, 9)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_uhamc"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_7o5y1")
+
+[node name="world" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="world"]
+polygon = PackedVector2Array(25, 16, 86, 561, 164, 601, 368, 525, 512, 565, 642, 480, 675, 562, 764, 581, 690, 466, 1002, 550, 1144, 89, 1152, 646, 719, 644, 5, 653)
+
+[node name="Polygon2D" type="Polygon2D" parent="world/CollisionPolygon2D"]
+
+[node name="pltplayer" type="CharacterBody2D" parent="world"]
+position = Vector2(445, 318)
+script = ExtResource("2_j4wsq")
+
+[node name="Sprite2D" type="Sprite2D" parent="world/pltplayer"]
+position = Vector2(8, -13)
+scale = Vector2(0.25, 0.375)
+texture = ExtResource("3_qr2a1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="world/pltplayer"]
+position = Vector2(8, -11)
+shape = SubResource("CircleShape2D_e1wka")
+
+[node name="Camera2D" type="Camera2D" parent="world/pltplayer"]
+zoom = Vector2(3, 3)
+
+[node name="interact" type="RigidBody2D" parent="world"]
+position = Vector2(829, 503)
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="world/interact"]
+position = Vector2(-1, -11)
+shape = SubResource("RectangleShape2D_o7wu2")
+
+[node name="Sprite2D" type="Sprite2D" parent="world/interact"]
+position = Vector2(-0.999994, -11)
+scale = Vector2(16, 26)
+texture = SubResource("PlaceholderTexture2D_momc8")
+
+[node name="startplotform" type="StaticBody2D" parent="."]
+position = Vector2(350, 327)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="startplotform"]
+shape = SubResource("SegmentShape2D_0ctf4")
+
+[node name="Sprite2D" type="Sprite2D" parent="startplotform/CollisionShape2D"]
+position = Vector2(105.25, 11.5)
+scale = Vector2(211.5, 6.99998)
+texture = SubResource("PlaceholderTexture2D_uhamc")
+
+[connection signal="mouse_entered" from="world/interact" to="." method="_on_interact_mouse_entered"]
