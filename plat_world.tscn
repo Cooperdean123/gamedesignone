@@ -8,7 +8,7 @@
 radius = 25.4951
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o7wu2"]
-size = Vector2(16, 26)
+size = Vector2(70, 105)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_momc8"]
 
@@ -48,12 +48,12 @@ position = Vector2(829, 503)
 freeze = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="world/interact"]
-position = Vector2(-1, -11)
+position = Vector2(48, -44.5)
 shape = SubResource("RectangleShape2D_o7wu2")
 
 [node name="Sprite2D" type="Sprite2D" parent="world/interact"]
-position = Vector2(-0.999994, -11)
-scale = Vector2(16, 26)
+position = Vector2(48, -46)
+scale = Vector2(73, 109)
 texture = SubResource("PlaceholderTexture2D_momc8")
 
 [node name="startplotform" type="StaticBody2D" parent="."]
