@@ -1,14 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://biop12ih1778t"]
+[gd_scene load_steps=12 format=3 uid="uid://biop12ih1778t"]
 
 [ext_resource type="Script" path="res://plat_world.gd" id="1_7o5y1"]
 [ext_resource type="Script" path="res://pltplayer.gd" id="2_j4wsq"]
 [ext_resource type="Texture2D" uid="uid://5t56rx1mqdhg" path="res://icon.svg" id="3_qr2a1"]
+[ext_resource type="Script" path="res://pltenemy.gd" id="4_mpskh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e1wka"]
 radius = 25.4951
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o7wu2"]
-size = Vector2(70, 105)
+size = Vector2(92, 141)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_momc8"]
 
@@ -17,13 +18,18 @@ a = Vector2(216, 9)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_uhamc"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k6ua1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tqdys"]
+size = Vector2(46, 53)
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_7o5y1")
 
 [node name="world" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="world"]
-polygon = PackedVector2Array(25, 16, 86, 561, 164, 601, 368, 525, 512, 565, 642, 480, 675, 562, 764, 581, 690, 466, 1002, 550, 1144, 89, 1152, 646, 719, 644, 5, 653)
+polygon = PackedVector2Array(6, 21, 86, 561, 164, 601, 368, 525, 512, 565, 642, 480, 675, 562, 764, 581, 690, 466, 1002, 550, 1144, 89, 1152, 646, 719, 644, 5, 653)
 
 [node name="Polygon2D" type="Polygon2D" parent="world/CollisionPolygon2D"]
 
@@ -48,12 +54,12 @@ position = Vector2(829, 503)
 freeze = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="world/interact"]
-position = Vector2(48, -44.5)
+position = Vector2(59, -26.5)
 shape = SubResource("RectangleShape2D_o7wu2")
 
 [node name="Sprite2D" type="Sprite2D" parent="world/interact"]
-position = Vector2(48, -46)
-scale = Vector2(73, 109)
+position = Vector2(59.75, -16.75)
+scale = Vector2(96.5, 167.5)
 texture = SubResource("PlaceholderTexture2D_momc8")
 
 [node name="startplotform" type="StaticBody2D" parent="."]
@@ -67,4 +73,48 @@ position = Vector2(105.25, 11.5)
 scale = Vector2(211.5, 6.99998)
 texture = SubResource("PlaceholderTexture2D_uhamc")
 
+[node name="dragable" type="RigidBody2D" parent="."]
+position = Vector2(536, 255)
+
+[node name="ColorRect" type="ColorRect" parent="dragable"]
+offset_left = -50.0
+offset_top = -5.0
+offset_right = -2.0
+offset_bottom = 59.0
+color = Color(1, 1, 0.180392, 1)
+
+[node name="Button" type="Button" parent="dragable/ColorRect"]
+modulate = Color(1, 1, 1, 0.996078)
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 50.0
+offset_bottom = 67.0
+focus_mode = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dragable"]
+shape = SubResource("RectangleShape2D_k6ua1")
+
+[node name="pltenemy" type="RigidBody2D" parent="."]
+position = Vector2(878, 396)
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("4_mpskh")
+
+[node name="Sprite2D" type="Sprite2D" parent="pltenemy"]
+position = Vector2(10, -18)
+scale = Vector2(0.34375, 0.367188)
+texture = ExtResource("3_qr2a1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pltenemy"]
+position = Vector2(9, -16.5)
+shape = SubResource("RectangleShape2D_tqdys")
+
+[node name="Timer" type="Timer" parent="pltenemy"]
+
 [connection signal="mouse_entered" from="world/interact" to="." method="_on_interact_mouse_entered"]
+[connection signal="button_down" from="dragable/ColorRect/Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="dragable/ColorRect/Button" to="." method="_on_button_button_up"]
+[connection signal="button_up" from="dragable/ColorRect/Button" to="world/pltplayer" method="_on_button_button_up"]
+[connection signal="body_shape_entered" from="pltenemy" to="." method="_on_pltenemy_body_shape_entered"]
+[connection signal="timeout" from="pltenemy/Timer" to="pltenemy" method="_on_timer_timeout"]
