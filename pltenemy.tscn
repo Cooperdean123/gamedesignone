@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdto4vwq68dsm"]
+
+[ext_resource type="Script" path="res://pltenemy.gd" id="1_yywdl"]
+[ext_resource type="Texture2D" uid="uid://5t56rx1mqdhg" path="res://icon.svg" id="2_wdsyi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tqdys"]
+size = Vector2(46, 53)
+
+[node name="pltenemy" type="RigidBody2D"]
+position = Vector2(878, 396)
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_yywdl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(10, -18)
+scale = Vector2(0.34375, 0.367188)
+texture = ExtResource("2_wdsyi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(9, -16.5)
+shape = SubResource("RectangleShape2D_tqdys")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

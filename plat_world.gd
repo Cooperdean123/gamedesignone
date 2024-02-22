@@ -34,3 +34,16 @@ func _on_pltenemy_body_shape_entered(body_rid, body, body_shape_index, local_sha
 		body.queue.free()
 		OS.alert("Rest In Peace")
 		get_free().reload_current_scene()
+		
+
+
+
+if input.is_action_just_pressed("ui_home"):
+	self.scale *= 2
+if input.is_action_just_pressed("ui_end"):
+	self.scale /= 2
+if input.is_action_just_pressed("ui_page_up"):
+	self.rotation_degrees += 5
+if input.is_action_just_pressed("ui_page_down"):
+	self.rotation_degrees -= 5
+

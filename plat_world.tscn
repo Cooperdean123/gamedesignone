@@ -1,12 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://biop12ih1778t"]
+[gd_scene load_steps=9 format=3 uid="uid://biop12ih1778t"]
 
 [ext_resource type="Script" path="res://plat_world.gd" id="1_7o5y1"]
-[ext_resource type="Script" path="res://pltplayer.gd" id="2_j4wsq"]
-[ext_resource type="Texture2D" uid="uid://5t56rx1mqdhg" path="res://icon.svg" id="3_qr2a1"]
-[ext_resource type="Script" path="res://pltenemy.gd" id="4_mpskh"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_e1wka"]
-radius = 25.4951
+[ext_resource type="PackedScene" uid="uid://b40dxt5qh4qd2" path="res://pltplayer.tscn" id="2_0yojq"]
+[ext_resource type="PackedScene" uid="uid://bdto4vwq68dsm" path="res://pltenemy.tscn" id="3_4nm2s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o7wu2"]
 size = Vector2(92, 141)
@@ -20,9 +16,6 @@ a = Vector2(216, 9)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k6ua1"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tqdys"]
-size = Vector2(46, 53)
-
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_7o5y1")
 
@@ -33,21 +26,7 @@ polygon = PackedVector2Array(6, 21, 86, 561, 164, 601, 368, 525, 512, 565, 642, 
 
 [node name="Polygon2D" type="Polygon2D" parent="world/CollisionPolygon2D"]
 
-[node name="pltplayer" type="CharacterBody2D" parent="world"]
-position = Vector2(445, 318)
-script = ExtResource("2_j4wsq")
-
-[node name="Sprite2D" type="Sprite2D" parent="world/pltplayer"]
-position = Vector2(8, -13)
-scale = Vector2(0.25, 0.375)
-texture = ExtResource("3_qr2a1")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="world/pltplayer"]
-position = Vector2(8, -11)
-shape = SubResource("CircleShape2D_e1wka")
-
-[node name="Camera2D" type="Camera2D" parent="world/pltplayer"]
-zoom = Vector2(3, 3)
+[node name="pltplayer" parent="world" instance=ExtResource("2_0yojq")]
 
 [node name="interact" type="RigidBody2D" parent="world"]
 position = Vector2(829, 503)
@@ -95,26 +74,8 @@ focus_mode = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="dragable"]
 shape = SubResource("RectangleShape2D_k6ua1")
 
-[node name="pltenemy" type="RigidBody2D" parent="."]
-position = Vector2(878, 396)
-max_contacts_reported = 1
-contact_monitor = true
-script = ExtResource("4_mpskh")
-
-[node name="Sprite2D" type="Sprite2D" parent="pltenemy"]
-position = Vector2(10, -18)
-scale = Vector2(0.34375, 0.367188)
-texture = ExtResource("3_qr2a1")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="pltenemy"]
-position = Vector2(9, -16.5)
-shape = SubResource("RectangleShape2D_tqdys")
-
-[node name="Timer" type="Timer" parent="pltenemy"]
+[node name="pltenemy" parent="." instance=ExtResource("3_4nm2s")]
 
 [connection signal="mouse_entered" from="world/interact" to="." method="_on_interact_mouse_entered"]
 [connection signal="button_down" from="dragable/ColorRect/Button" to="." method="_on_button_button_down"]
 [connection signal="button_up" from="dragable/ColorRect/Button" to="." method="_on_button_button_up"]
-[connection signal="button_up" from="dragable/ColorRect/Button" to="world/pltplayer" method="_on_button_button_up"]
-[connection signal="body_shape_entered" from="pltenemy" to="." method="_on_pltenemy_body_shape_entered"]
-[connection signal="timeout" from="pltenemy/Timer" to="pltenemy" method="_on_timer_timeout"]
