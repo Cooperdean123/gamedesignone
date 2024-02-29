@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://biop12ih1778t"]
+[gd_scene load_steps=10 format=3 uid="uid://biop12ih1778t"]
 
 [ext_resource type="Script" path="res://plat_world.gd" id="1_7o5y1"]
 [ext_resource type="PackedScene" uid="uid://b40dxt5qh4qd2" path="res://pltplayer.tscn" id="2_0yojq"]
 [ext_resource type="PackedScene" uid="uid://bdto4vwq68dsm" path="res://pltenemy.tscn" id="3_4nm2s"]
+[ext_resource type="PackedScene" uid="uid://dnw61pyvwkrm2" path="res://changelevel.tscn" id="4_eam6u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o7wu2"]
 size = Vector2(92, 141)
@@ -26,7 +27,7 @@ polygon = PackedVector2Array(6, 21, 86, 561, 164, 601, 368, 525, 512, 565, 642, 
 
 [node name="Polygon2D" type="Polygon2D" parent="world/CollisionPolygon2D"]
 
-[node name="pltplayer" parent="world" instance=ExtResource("2_0yojq")]
+[node name="pltplayer" parent="world" groups=["Player"] instance=ExtResource("2_0yojq")]
 
 [node name="interact" type="RigidBody2D" parent="world"]
 position = Vector2(829, 503)
@@ -75,6 +76,9 @@ focus_mode = 0
 shape = SubResource("RectangleShape2D_k6ua1")
 
 [node name="pltenemy" parent="." instance=ExtResource("3_4nm2s")]
+
+[node name="changelevel" parent="." instance=ExtResource("4_eam6u")]
+position = Vector2(7, 7)
 
 [connection signal="mouse_entered" from="world/interact" to="." method="_on_interact_mouse_entered"]
 [connection signal="button_down" from="dragable/ColorRect/Button" to="." method="_on_button_button_down"]
