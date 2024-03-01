@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=3 uid="uid://dbwehel0vtwl6"]
+
+[ext_resource type="Script" path="res://physdemo.gd" id="1_o2o70"]
+[ext_resource type="PackedScene" uid="uid://du8rhlsnq7h1h" path="res://phys_ball.tscn" id="2_50vv7"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0yf5d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uh3xy"]
+size = Vector2(1224, 31)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8vqj5"]
+font_size = 26
+
+[node name="physdemo" type="Node2D"]
+script = ExtResource("1_o2o70")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(1, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(610.875, 639)
+scale = Vector2(1212.25, 24.5)
+texture = SubResource("PlaceholderTexture2D_0yf5d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(612, 639.5)
+shape = SubResource("RectangleShape2D_uh3xy")
+
+[node name="phys_ball" parent="." instance=ExtResource("2_50vv7")]
+position = Vector2(500, 221)
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 30.0
+offset_top = 121.0
+offset_right = 307.0
+offset_bottom = 209.0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_right = 206.0
+offset_bottom = 30.0
+text = "Gravity:"
+label_settings = SubResource("LabelSettings_8vqj5")
+
+[node name="gravslide1" type="HSlider" parent="Panel"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 46.0
+offset_right = 242.0
+offset_bottom = 62.0
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 228.0
+offset_top = 6.0
+offset_right = 260.0
+offset_bottom = 37.0
+text = "!"
+
+[connection signal="changed" from="Panel/gravslide1" to="." method="_on_gravslide_1_changed"]
+[connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]
