@@ -38,6 +38,7 @@ layout_mode = 2
 text = "resume"
 
 [node name="quit" type="Button" parent="Panel/VBoxContainer/resume"]
+layout_mode = 0
 offset_left = -4.5
 offset_top = 34.5
 offset_right = 223.5
