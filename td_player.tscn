@@ -143,9 +143,9 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lwabd"]
 radius = 56.0
-height = 140.0
+height = 146.0
 
-[node name="td_player" type="CharacterBody2D"]
+[node name="td_player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_mv2d0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -159,5 +159,5 @@ autoplay = "idledown"
 zoom = Vector2(3, 3)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3, -15)
+position = Vector2(-1, -16)
 shape = SubResource("CapsuleShape2D_lwabd")

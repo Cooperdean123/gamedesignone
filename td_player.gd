@@ -21,6 +21,8 @@ var look_direction = Vector2.DOWN # (0, 1)
 var menu_scene = preload("res://mygui.tscn")
 var menu_instance = null 
 
+@onready var p_HUD = get_tree().get_first_node_in_group("HUD")
+
 func pickup_money(value):
 	data.money += value
 
