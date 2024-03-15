@@ -2,11 +2,31 @@ extends CharacterBody2D
 
 
 const SPEED = 200.0
+const MAXIMUM_OBTAINABLE_HEALTH = 400.0
+
+enum STATES { IDLE=0, DEAD, DAMAGED, ATTACKING, CHARGING}
+
+@export var data = {
+	"max_health": 60.0,
+	"health": 60.0,
+	"money": 0,
+	"states": STATES.IDLE,
+	"secondaries": [],
+}
+
+
 var inertia = Vector2()
 var look_direction = Vector2.DOWN # (0, 1)
 
 var menu_scene = preload("res://mygui.tscn")
 var menu_instance = null 
+
+func pickup_money(value):
+	data.money += value
+
+func pickup_health(value):
+	data.health += value
+	data.health = clamp(data.health, 0, data.max_health)
 
 func _ready():
 	menu_instance = menu_scene.instantiate()
