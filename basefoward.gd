@@ -23,5 +23,7 @@ func _init(deafult_value: int = 1)
 
 
 
+
+
 func _process(delta):
 	pass
