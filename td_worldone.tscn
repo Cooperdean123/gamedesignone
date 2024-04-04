@@ -3239,5 +3239,6 @@ layer_0/tile_data = PackedInt32Array(0, 1441792, 0, 1, 1507328, 0, 2, 1507328, 0
 
 [node name="td_player" parent="." instance=ExtResource("2_ujhl0")]
 position = Vector2(598, 227)
+data = null
 
 [node name="playerhud" parent="." instance=ExtResource("3_ijdwt")]

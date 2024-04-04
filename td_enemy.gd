@@ -1,8 +1,8 @@
-extends CharacterBody2D
+extends BaseItem
 
-const SPEED = 60.0
-var MAX_HEALTH = 30.0
-var HEALTH = MAX_HEALTH
-var damage = 10.0
-var AI_STATE = STATES.IDLE
+func _init():  super._init(1)
+func _ready(): super._ready()
 
+func interact(player):
+	player.pickup_money(value)
+	remove()
