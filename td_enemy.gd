@@ -162,3 +162,4 @@ func _physics_process(delta):
 		move_and_slide()
 		inertia = inertia.move_toward(Vector2(), delta * 1000.0)
 	pass
+ max(5)
